@@ -4,9 +4,9 @@ module ApplicationHelper
     request.path == path ? "active" : ""
   end
 
-  def nav_link(string, path)
+  def nav_link(string, path, options={})
     nav_string = nav_string(string)
-    link_to(nav_string, path)
+    link_to(nav_string, path, options)
   end
 
   def nav_string(string)
@@ -17,7 +17,7 @@ module ApplicationHelper
     case string
     when "Home" then nav_icon_tag("home")
     when "Darüber" then nav_icon_tag("magnet")
-    else nav_icon_tag("remove")
+    else nav_icon_tag("placeholder")
     end
   end
 

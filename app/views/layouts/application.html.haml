@@ -22,6 +22,8 @@
             %li.nav-header Nach Dateityp
             %li.nav-header Favoriten
             %li.nav-header Nach Tags
+            %li.nav-header Session
+            %li{:class => nav_class(destroy_user_session_path)}= nav_link("Ausloggen", destroy_user_session_path, :method => "delete")
         .span9
           .notice= notice
           .alert= alert
