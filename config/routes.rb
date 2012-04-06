@@ -1,6 +1,6 @@
 Filemanager::Application.routes.draw do
 
-  get "home/index"
+  get :about, :to => "home#about"
 
   root :to => "home#index"
 
