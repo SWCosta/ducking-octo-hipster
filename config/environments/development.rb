@@ -34,4 +34,8 @@ Filemanager::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  # config the the default url options for action mailer
+  # TODO: add this for production and testing too
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 end
