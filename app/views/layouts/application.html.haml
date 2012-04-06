@@ -18,6 +18,7 @@
               %li.nav-header= "Ich (#{current_user.email})"
               %li{:class => nav_class(root_path)}= nav_link("Home", root_path)
               %li{:class => nav_class(about_path)}= nav_link("Darüber", about_path)
+              %li{:class => nav_class(users_path)}= nav_link("User", users_path)
               %li Devisekram
               %li.nav-header Dateisystem
               %li.nav-header Nach Dateityp
@@ -32,8 +33,14 @@
 
 
         .span9
-          .notice= notice
-          .alert= alert
+          - if flash[:info]
+            .alert.alert-info
+              %a.close{:data-dismiss => "alert"}
+              = notice
+          - if flash[:alert]
+            .alert.alert-error
+              %a.close{:data => {:dismiss => "alert"}}= "x"
+              = alert
           = yield
 
     = debug(params)

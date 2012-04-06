@@ -3,6 +3,7 @@ Filemanager::Application.routes.draw do
   devise_for :users
 
   get :about, :to => "home#about"
+  get :users, :to => "users#index"
 
   root :to => "home#index"
 
