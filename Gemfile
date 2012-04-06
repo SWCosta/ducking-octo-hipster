@@ -5,6 +5,7 @@ gem 'sqlite3'
 gem 'therubyracer'
 gem 'jquery-rails'
 gem 'haml-rails'
+gem 'hirb'
 
 gem 'devise'
 
