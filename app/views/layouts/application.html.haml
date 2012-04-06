@@ -15,7 +15,7 @@
           - if user_signed_in?
             %h2 Navigation
             %ul.nav.nav-list
-              %li.nav-header Ich
+              %li.nav-header= "Ich (#{current_user.email})"
               %li{:class => nav_class(root_path)}= nav_link("Home", root_path)
               %li{:class => nav_class(about_path)}= nav_link("Darüber", about_path)
               %li Devisekram
