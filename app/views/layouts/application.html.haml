@@ -12,18 +12,25 @@
     .container
       .row
         .span3
-          %h2 Navigation
-          %ul.nav.nav-list
-            %li.nav-header Ich
-            %li{:class => nav_class(root_path)}= nav_link("Home", root_path)
-            %li{:class => nav_class(about_path)}= nav_link("Darüber", about_path)
-            %li Devisekram
-            %li.nav-header Dateisystem
-            %li.nav-header Nach Dateityp
-            %li.nav-header Favoriten
-            %li.nav-header Nach Tags
-            %li.nav-header Session
-            %li{:class => nav_class(destroy_user_session_path)}= nav_link("Ausloggen", destroy_user_session_path, :method => "delete")
+          - if user_signed_in?
+            %h2 Navigation
+            %ul.nav.nav-list
+              %li.nav-header Ich
+              %li{:class => nav_class(root_path)}= nav_link("Home", root_path)
+              %li{:class => nav_class(about_path)}= nav_link("Darüber", about_path)
+              %li Devisekram
+              %li.nav-header Dateisystem
+              %li.nav-header Nach Dateityp
+              %li.nav-header Favoriten
+              %li.nav-header Nach Tags
+              %li.nav-header Session
+              %li{:class => nav_class(destroy_user_session_path)}= nav_link("Ausloggen", destroy_user_session_path, :method => "delete")
+          - else
+            %ul.nav.nav-list
+              %li{:class => nav_class(new_user_session_path)}= nav_link("Einloggen", new_user_session_path)
+              %li{:class => nav_class(new_user_password_path)}= nav_link("Passwort vergessen?", new_user_password_path)
+
+
         .span9
           .notice= notice
           .alert= alert
