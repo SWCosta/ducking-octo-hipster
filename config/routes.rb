@@ -2,7 +2,9 @@ Filemanager::Application.routes.draw do
 
   devise_for :users
 
-  resources :files
+  scope :module => :bin do
+    resources :files
+  end
 
   get :about, :to => "home#about"
   #get :users, :to => "users#index"
