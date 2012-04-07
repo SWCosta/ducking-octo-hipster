@@ -2,6 +2,8 @@ Filemanager::Application.routes.draw do
 
   devise_for :users
 
+  resources :files
+
   get :about, :to => "home#about"
   #get :users, :to => "users#index"
   resources :users, :only => [:index, :new, :destroy]

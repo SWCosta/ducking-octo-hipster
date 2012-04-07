@@ -1,0 +1,14 @@
+%h1 Dateien
+
+= will_paginate @files, :previous_label => h("<"), :next_label => h(">"), :renderer => BootstrapLinkRenderer
+
+%table.table.table-condensed
+  %tr
+    %th Name
+    %th Dateityp
+    %th Größe
+  - @files.each do |file|
+    %tr
+      %td= file.name
+      %td= file.ext
+      %td= file.size
