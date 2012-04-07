@@ -1,5 +1,6 @@
 require 'will_paginate/view_helpers/link_renderer'
 require 'will_paginate/view_helpers/action_view'
+require 'will_paginate/view_helpers/link_renderer_base'
 
 class BootstrapLinkRenderer < WillPaginate::ActionView::LinkRenderer
 end
@@ -7,7 +8,6 @@ end
 module WillPaginate
   module ActionView
     def will_paginate(collection = nil, options = {})
-      options[:renderer] ||= BootstrapLinkRenderer
       super.try :html_safe
     end
 

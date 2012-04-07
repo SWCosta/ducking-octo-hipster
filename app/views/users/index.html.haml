@@ -3,7 +3,7 @@
 
 %h1 Benutzer
 
-= will_paginate @users, :previous_label => h("<"), :next_label => h(">"), :renderer => BootstrapLinkRenderer
+= will_paginate @users, :previous_label => h("<"), :next_label => h(">"), :renderer => WillPaginate::ActionView::BootstrapLinkRenderer
 
 %table
   %tr
