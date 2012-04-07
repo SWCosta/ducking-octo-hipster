@@ -28,6 +28,9 @@ module ApplicationHelper
 
   # defining link helper to show button-ish links
   def link_button(*args)
-    link_to(*args.push(:class => "btn btn-primary"))
+    args[1] ||= {}
+    args[2] ||= {}
+    args[2][:class] ? args[2].push(" btn btn-primary") : args[2][:class] = "btn btn-primary"
+    link_to(*args)
   end
 end

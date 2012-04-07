@@ -33,9 +33,9 @@
 
 
         .span9
-          - if flash[:info]
+          - if flash[:notice]
             .alert.alert-info
-              %a.close{:data-dismiss => "alert"}
+              %a.close{:data => {:dismiss => "alert"}}= "x"
               = notice
           - if flash[:alert]
             .alert.alert-error

@@ -4,7 +4,8 @@ Filemanager::Application.routes.draw do
 
   get :about, :to => "home#about"
   #get :users, :to => "users#index"
-  resources :users, :only => [:index, :new, :create]
+  resources :users, :only => [:index, :new, :destroy]
+  post "users/new", :to => "users#create", :as => "new_user"
 
   root :to => "home#index"
 

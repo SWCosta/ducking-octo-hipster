@@ -9,7 +9,7 @@
   - @users.each do |user|
     %tr
       %td= user.email
-      %td= link_button "löschen", "#"
+      %td= link_button "löschen", user, :method => :delete
 
 = link_button "Neuer User", new_user_path
 
