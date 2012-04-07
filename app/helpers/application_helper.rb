@@ -1,5 +1,6 @@
 # encoding: utf-8
 module ApplicationHelper
+  # helper for the navigation
   def nav_class(path)
     request.path == path ? "active" : ""
   end
@@ -23,7 +24,10 @@ module ApplicationHelper
 
   def nav_icon_tag(string)
     content_tag :i, "", :class => "icon-#{string}"
-    #tag :i
-    #"<i class=>\"icon-#{string}\">"
+  end
+
+  # defining link helper to show button-ish links
+  def link_button(*args)
+    link_to(*args.push(:class => "btn btn-primary"))
   end
 end

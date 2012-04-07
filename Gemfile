@@ -23,6 +23,7 @@ group :development, :test do
   gem 'guard-livereload' if RUBY_PLATFORM =~ /darwin/i
   #testing & coverage
   gem "simplecov", :require => false
+  gem 'ruby-debug19', :require => "ruby-debug"
 end
 
 group :test do

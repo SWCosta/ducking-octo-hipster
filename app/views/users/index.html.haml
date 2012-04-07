@@ -1,2 +1,15 @@
 %h1 Users#index
 %p Find me in app/views/users/index.html.haml
+
+%h1 Benutzer
+%table
+  %tr
+    %th Email
+    %th löschen
+  - @users.each do |user|
+    %tr
+      %td= user.email
+      %td= link_button "löschen", "#"
+
+= link_button "Neuer User", new_user_path
+

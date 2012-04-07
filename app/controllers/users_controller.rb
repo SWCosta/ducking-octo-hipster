@@ -3,4 +3,8 @@ class UsersController < ApplicationController
     flash.now[:alert] = "ich teste was"
     @users = User.all
   end
+
+  def new
+    @user = User.new
+  end
 end
