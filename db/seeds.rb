@@ -13,4 +13,10 @@ User.create!( :email => "yuszuv@gmx.de",
   User.create!( :email => "test#{i}@fucklove.de",
                 :password => "foobar" )
 end
+
+50.times do |i|
+  Bin::File.create!(:name => "file#{i}",
+                    :ext => ["jpg","exe","tar"][i],
+                    :size => i*Time.now.to_i % 3000 )
+end
                 
