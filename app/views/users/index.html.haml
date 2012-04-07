@@ -1,9 +1,6 @@
-%h1 Users#index
-%p Find me in app/views/users/index.html.haml
-
 %h1 Benutzer
 
-= will_paginate @users, :previous_label => h("<"), :next_label => h(">"), :renderer => WillPaginate::ActionView::BootstrapLinkRenderer
+= will_paginate @users, :previous_label => h("<"), :next_label => h(">"), :renderer => BootstrapLinkRenderer
 
 %table
   %tr
