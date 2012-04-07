@@ -10,6 +10,7 @@ gem 'hirb'
 gem 'devise'
 gem 'simple_form'
 gem 'will_paginate'
+gem 'carrierwave'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
