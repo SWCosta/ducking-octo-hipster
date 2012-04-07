@@ -2,6 +2,9 @@
 %p Find me in app/views/users/index.html.haml
 
 %h1 Benutzer
+
+= will_paginate @users, :previous_label => h("<"), :next_label => h(">"), :renderer => BootstrapLinkRenderer
+
 %table
   %tr
     %th Email
