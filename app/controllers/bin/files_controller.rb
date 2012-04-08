@@ -9,7 +9,7 @@ module Bin
     end
 
     def create
-      @file = Bin::File.new(params[:file])
+      @file = Bin::File.new(params[:file].merge(:user_id => current_user.id))
       if @file.save
         redirect_to files_path, :notice => "Neue Datei entstanden"
       else
