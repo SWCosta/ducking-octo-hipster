@@ -15,10 +15,10 @@ User.create!( :email => "yuszuv@gmx.de",
                 :password => "foobar" )
 end
 
-puts "creating files"
-50.times do |i|
-  Bin::File.create!(:name => "file#{i}",
-                    :ext => ["jpg","exe","tar"][i%3],
-                    :size => i*Time.now.to_i % 3000 )
-end
+#puts "creating files"
+#50.times do |i|
+#  Bin::File.create!(:name => "file#{i}",
+#                    :ext => ["jpg","exe","tar"][i%3],
+#                    :size => i*Time.now.to_i % 3000 )
+#end
                 

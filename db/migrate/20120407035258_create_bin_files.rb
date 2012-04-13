@@ -1,9 +1,12 @@
 class CreateBinFiles < ActiveRecord::Migration
   def change
-    create_table :bin_files do |t|
+    create_table :nodes do |t|
+      t.string :type
       t.string :name
-      t.string :ext
-      t.integer :size
+      t.text :data
+      t.string :file
+      t.reference :directory
+      t.reference :user
 
       t.timestamps
     end
