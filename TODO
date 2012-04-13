@@ -1,0 +1,4 @@
+dirs nur einsehbar für besitzer
+dir nur löschbar, wenn ohne inhalt
+dateien nur downloadbar, wenn besitzer
+icons für dirs

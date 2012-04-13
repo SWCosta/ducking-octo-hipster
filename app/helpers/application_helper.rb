@@ -18,6 +18,7 @@ module ApplicationHelper
     case string
     when "Home" then nav_icon_tag("home")
     when "Darüber" then nav_icon_tag("magnet")
+    when "Verzeichnisse" then nav_icon_tag("magnet")
     else nav_icon_tag("placeholder")
     end
   end

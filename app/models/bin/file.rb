@@ -1,12 +1,26 @@
-class Bin::File < ActiveRecord::Base
-  belongs_to :user
+module Bin
+  class File < ActiveRecord::Base
+    belongs_to :user
 
-  validates_presence_of :name
-  validates_inclusion_of :user_id, :in => User.all.map(&:id)
+    validates_presence_of :name
+    validates_inclusion_of :user_id, :in => User.all.map(&:id)
 
-  mount_uploader :file, FileUploader
+    default_scope order(:file)
+    scope :under, proc{ |dir| where(:dir => dir) }
 
-  def self.model_name
-    ActiveModel::Name.new(Bin::File,Bin,"file")
+    before_save :write_properties
+
+    mount_uploader :file, FileUploader
+
+    def self.model_name
+      ActiveModel::Name.new(Bin::File,Bin,"file")
+    end
+
+    private
+
+    def write_properties
+      #TODO: write file_size, name
+    end
+
   end
 end
