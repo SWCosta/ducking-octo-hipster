@@ -1,0 +1,2 @@
+class Directory < Node
+end
