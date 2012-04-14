@@ -10,11 +10,11 @@ Filemanager::Application.routes.draw do
   root :to => "home#index"
 
   scope "/files" do
-    get "/(*directory)/", to: "directories#show", :as => "directory"
+    get "/(*dir)/", to: "directories#show", :as => "directory"
   end
 
   resource :file, :as => "bin"
-  resource :directory
+  resource :directory, :as => "dir", :except => :show
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

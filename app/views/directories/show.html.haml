@@ -1,0 +1,10 @@
+%h2= @dir.name
+
+= link_button "Neues Verzeichnis", new_dir_path(:dir => @dir.name)
+
+%table
+  %tr
+    %th Name
+  - @subdirs.each do |dir|
+    %tr
+      %td= dir.basename
