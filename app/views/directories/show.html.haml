@@ -1,5 +1,16 @@
 %h2= @dir.name
 
+%ul.breadcrumb
+  %li
+    %span.divider= "/"
+  - directory_menu_items(@dir.name)[0..-2].each do |item|
+    %li
+      = link_to item[:name], directory_path(item[:path])
+      %span.divider= "/"
+  - last = directory_menu_items(@dir.name).last
+  %li
+    = last[:name]
+
 = link_button "Neues Verzeichnis", new_dir_path(:dir => @dir.name)
 
 %table
@@ -7,4 +18,7 @@
     %th Name
   - @subdirs.each do |dir|
     %tr
-      %td= dir.basename
+      %td
+        %i.icon-folder-close
+        = link_to dir.basename, directory_path(dir.fullname)
+        = link_to_folder(dir)
