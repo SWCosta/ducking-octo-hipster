@@ -5,8 +5,8 @@ class CreateBinFiles < ActiveRecord::Migration
       t.string :name
       t.text :data
       t.string :file
-      t.reference :directory
-      t.reference :user
+      t.references :directory
+      t.references :user
 
       t.timestamps
     end

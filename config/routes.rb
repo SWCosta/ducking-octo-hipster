@@ -1,9 +1,5 @@
 Filemanager::Application.routes.draw do
 
-  get "directories/new"
-
-  get "directories/create"
-
   devise_for :users
 
   get :about, :to => "home#about"
@@ -13,11 +9,12 @@ Filemanager::Application.routes.draw do
 
   root :to => "home#index"
 
-  scope :module => :bin do
-    get "directories/list/(*directory)", :to => "directories#show", :as => "directories"
-    resources :directories, :except => [:index, :show]
-    resources :files
+  scope "/files" do
+    get "/(*directory)/", to: "directories#show", :as => "directory"
   end
+
+  resource :file, :as => "bin"
+  resource :directory
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

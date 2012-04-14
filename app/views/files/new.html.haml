@@ -1,0 +1,11 @@
+%h1 Neue Datei anlegen
+
+= simple_form_for @file, :url => bin_path do |f|
+  = f.input :name
+  = f.input :data, :placeholder => "ich werde ein hash"
+  = f.input :file
+  = f.input :file_cache, :as => :hidden
+  = "zeige datei, wenn was im cache ist"
+  %br/
+  = f.button :submit
+
