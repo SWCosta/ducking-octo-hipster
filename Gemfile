@@ -40,3 +40,7 @@ group :test do
   gem 'rb-inotify' if RUBY_PLATFORM =~ /linux/i # on linux
   gem 'libnotify' if RUBY_PLATFORM =~ /linux/i # on linux
 end
+
+group :development do
+  gem 'quiet_assets'
+end

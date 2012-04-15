@@ -16,8 +16,8 @@ module DirectoriesHelper
     items.each{ |item| item[:name].sub!(/^\//,"") }
   end
 
-  def link_to_folder(dir)
-    = "bla"
-    = "blubb"
-  end
+  #def link_to_folder(dir)
+  #  = "bla"
+  #  = "blubb"
+  #end
 end
