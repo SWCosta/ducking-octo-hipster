@@ -11,6 +11,7 @@ gem 'devise'
 gem 'simple_form'
 gem 'will_paginate'
 gem 'carrierwave'
+gem 'ancestry'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

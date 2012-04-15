@@ -21,4 +21,20 @@ end
 #                    :ext => ["jpg","exe","tar"][i%3],
 #                    :size => i*Time.now.to_i % 3000 )
 #end
+
+puts "creating directory tree"
+user = User.first
+root = user.root_dir
+3.times do |i|
+  dir = root.subdirs.create!( :name => "sub#{i}" )
+  3.times do |j|
+    subdir = dir.subdirs.create!( :name => "subsub#{j}" )
+    4.times do |k|
+      subdir.subdirs.create!( :name => "#{k}#{["foo","bar","baz"][(i+j+k) % 3]}" )
+    end
+  end
+end
+
+
+
                 

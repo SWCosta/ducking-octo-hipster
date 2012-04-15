@@ -7,8 +7,11 @@ class CreateBinFiles < ActiveRecord::Migration
       t.string :file
       t.references :directory
       t.references :user
+      t.string :ancestry
 
       t.timestamps
     end
+
+    add_index :nodes, :ancestry
   end
 end

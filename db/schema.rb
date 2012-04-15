@@ -20,9 +20,12 @@ ActiveRecord::Schema.define(:version => 20120407035258) do
     t.string   "file"
     t.integer  "directory_id"
     t.integer  "user_id"
+    t.string   "ancestry"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end
+
+  add_index "nodes", ["ancestry"], :name => "index_nodes_on_ancestry"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
