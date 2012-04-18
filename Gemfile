@@ -6,6 +6,7 @@ gem 'therubyracer'
 gem 'jquery-rails'
 gem 'haml-rails'
 gem 'hirb'
+gem 'awesome_print'
 
 gem 'devise'
 gem 'simple_form'

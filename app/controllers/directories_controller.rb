@@ -1,6 +1,6 @@
 class DirectoriesController < ApplicationController
   before_filter do
-    @root = Directory.where(:user_id => current_user.id)
+    @root = current_user.root_dir
   end
 
   def new
@@ -19,6 +19,8 @@ class DirectoriesController < ApplicationController
   end
 
   def show
+    debugger
+    @root.subtree.arrange
     @dir = @root.find_by_name!("/#{params[:dir]}")
     @subdirs = @dir.subdirs || []
     rescue

@@ -34,6 +34,7 @@ GEM
     ansi (1.4.2)
     archive-tar-minitar (0.5.2)
     arel (3.0.2)
+    awesome_print (1.0.2)
     bcrypt-ruby (3.0.1)
     builder (3.0.0)
     capybara (1.1.2)
@@ -225,6 +226,7 @@ PLATFORMS
 
 DEPENDENCIES
   ancestry
+  awesome_print
   capybara
   carrierwave
   coffee-rails (~> 3.2.1)
