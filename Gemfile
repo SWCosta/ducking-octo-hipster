@@ -39,3 +39,7 @@ group :test do
   gem 'rb-inotify' if RUBY_PLATFORM =~ /linux/i # on linux
   gem 'libnotify' if RUBY_PLATFORM =~ /linux/i # on linux
 end
+
+group :production do
+  gem 'mysql2'
+end
