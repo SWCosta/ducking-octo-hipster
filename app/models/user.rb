@@ -33,6 +33,7 @@ class User < ActiveRecord::Base
       recoverable.send_reset_password_instructions
     end
     recoverable
+  end
 
   private
 
