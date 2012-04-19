@@ -12,6 +12,7 @@ require 'rvm/capistrano'
 
 
 set :deploy_to, "/opt/filemanager"
+set :deploy_via, :remote_cache
 
 server "fucklove.de", :web, :app, :db, :primary => true
 set :user, "deployer"
@@ -68,8 +69,19 @@ namespace :deploy do
   task :include_db do
     run "echo 'bar!!!!!'"
     run "touch #{release_path}/config/database.yml"
-    run "ln -nfs {shared_path}/config/database.yml !:$"
+    run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+    run "ls -l #{release_path}/config/"
+    run "echo 'scheisse!!!!!!!!!!!!!!'"
+    run "cat #{release_path}/config/database.yml"
+  end
+
+  task :debug, :roles => assets_role do
+    run "cd #{release_path} && bundle exec rake RAILS_ENV=production RAILS_GROUPS=assets assets:precompile --trace"
   end
 end
+
+#before "deploy:assets:precompile", "deploy:debug"
+
+
 
 before "deploy:finalize_update", "deploy:include_db"
