@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.2'
 gem 'capistrano'
-gem 'passenger'
+gem 'passenger', '3.0.12'
 
 gem 'sqlite3'
 gem 'therubyracer'
