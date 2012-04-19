@@ -1,6 +1,6 @@
 Filemanager::Application.routes.draw do
 
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => "registrations" }
 
   get :about, :to => "home#about"
   #get :users, :to => "users#index"
