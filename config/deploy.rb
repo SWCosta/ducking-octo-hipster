@@ -25,10 +25,6 @@ namespace :deploy do
   end
 end
 
-task :printenv do
-  run "#{try_sudo} printenv"
-end
-
 namespace :deploy do
   desc "symlinks a database config in the shared directory"
   task :symlink:db do
