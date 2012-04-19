@@ -27,12 +27,13 @@ end
 
 namespace :deploy do
   desc "symlinks a database config in the shared directory"
-  task :symlink:db do
+  task :symlink_db do
     run "touch #{release_path}/config/database.yml"
     run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
   end
 end
-before "deploy:finalize_update", "deploy:symlink:db"
+
+before "deploy:finalize_update", "deploy:symlink_db"
 
 # if you want to clean up old releases on each deploy uncomment this:
 # after "deploy:restart", "deploy:cleanup"
