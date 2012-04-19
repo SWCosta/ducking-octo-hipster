@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.2'
+gem 'capistrano'
+gem 'passenger'
+
 gem 'sqlite3'
 gem 'therubyracer'
 gem 'jquery-rails'
