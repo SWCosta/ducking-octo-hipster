@@ -12,6 +12,7 @@ gem 'haml-rails'
 gem 'hirb'
 gem 'twitter-bootstrap-rails'
 gem 'awesome_print'
+gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
 
 gem 'devise'
 gem 'simple_form'
