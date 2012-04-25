@@ -4,7 +4,7 @@ describe Bin do
   pending "add some examples to (or delete) #{__FILE__}"
 end
 # == Schema Information
-# Schema version: 20120419110829
+# Schema version: 20120425192930
 #
 # Table name: nodes
 #
@@ -18,6 +18,7 @@ end
 #  ancestry     :string(255)
 #  created_at   :datetime        not null
 #  updated_at   :datetime        not null
+#  basename     :text
 #
 # Indexes
 #
