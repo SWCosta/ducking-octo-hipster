@@ -5,3 +5,11 @@
 require File.expand_path('../config/application', __FILE__)
 
 Filemanager::Application.load_tasks
+
+require 'annotate/tasks'
+
+# customize annotate task
+ENV['position_in_class']   = "after"
+ENV['position_in_fixture'] = "after"
+ENV['show_indexes']        = "true"
+ENV['include_version']     = "true"
