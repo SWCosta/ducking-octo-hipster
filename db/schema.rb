@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120426233351) do
+ActiveRecord::Schema.define(:version => 20120427190351) do
 
   create_table "nodes", :force => true do |t|
     t.string   "type"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(:version => 20120426233351) do
     t.datetime "created_at",                                :null => false
     t.datetime "updated_at",                                :null => false
     t.boolean  "approved",               :default => false, :null => false
+    t.boolean  "manufactured",           :default => false
   end
 
   add_index "users", ["approved"], :name => "index_users_on_approved"

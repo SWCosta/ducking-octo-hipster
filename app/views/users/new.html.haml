@@ -1,5 +1,6 @@
 %h1 Neuen Benutzer anlegen
 = simple_form_for @user, :url => new_user_path, :html => { :class => "form-horizontal" } do |f|
   = f.input :email
-  = f.input :password
+  = f.input :approved, :input_html => { :value => '1' }, :as => :hidden
+  = f.input :manufactured, :input_html => { :value => '1' }, :as => :hidden
   = f.button :submit
