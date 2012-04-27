@@ -23,8 +23,7 @@ class DirectoriesController < ApplicationController
     dirname = "/" + params[:dir].to_s
     @root.subtree.arrange
     @dir = @dirs.find_by_fullname(dirname)
-    @nodes = @dir.children.order("type desc, name asc")
-    @subdirs = @nodes.where(:type => "Directory")
+    @nodes = @dir.children.order("type desc, name asc").page(params[:page]).per_page(10)
   end
 
   def edit

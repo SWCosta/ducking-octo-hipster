@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   def index
-    params[:page] = get_page_for_user(id) if params[:user_page]
     @users = User.order(:email).page(params[:page]).per_page(5)
   end
 

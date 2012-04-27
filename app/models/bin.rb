@@ -1,9 +1,11 @@
 class Bin < Node
-  belongs_to :directory
+  #belongs_to :directory
 
   mount_uploader :file, FileUploader
 
-  scope :under, proc{ |dir| where(:dir => dir.name) }
+  scope :under, proc{ |dir| where(:dir => dir.name) } # is this neccessary??
+
+  validates_presence_of :ancestry
 
   before_save :write_properties
 

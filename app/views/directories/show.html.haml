@@ -8,26 +8,19 @@
   %li
     %strong= last[:name]
 
-%table
-  %tr
-    %th Name
-  - @subdirs.each do |dir|
-    %tr
-      %td
-        %i.icon-folder-close
-        = link_to dir.name, directory_path(dir.fullname.slice(1..-1))
-        = link_to icon("edit"), edit_dir_path(dir)
-        -#= link_to_folder(dir)
+= will_paginate @nodes, :previous_label => h("<"), :next_label => h(">"), :renderer => BootstrapLinkRenderer
 
 %table
   %tr
     %th Name
   - @nodes.each do |node|
-    %tr
-      %td
-        %i.icon-folder-close
-        = link_to node.name, directory_path(node.fullname.slice(1..-1))
-        = link_to icon("edit"), edit_dir_path(node)
+    - present node do |node_presenter|
+      %tr
+        %td= node_presenter.handle
+        %td
+          %i.icon-folder-close
+          = link_to node.name, directory_path(node.fullname.slice(1..-1))
+          = link_to icon("edit"), edit_dir_path(node)
         -#= link_to_folder(dir)
 = link_button "Neues Verzeichnis", new_dir_path(:dir => @dir)
 = link_button "Neue Datei hinzufügen", new_bin_path(:dir => @dir)

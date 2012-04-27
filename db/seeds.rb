@@ -28,7 +28,7 @@ end
 puts "creating directory tree"
 user = User.first
 root = user.root_dir
-3.times do |i|
+7.times do |i|
   dir = root.subdirs.create!( :name => "sub#{i}" )
   3.times do |j|
     subdir = dir.subdirs.create!( :name => "subsub#{j}" )
@@ -36,6 +36,10 @@ root = user.root_dir
       subdir.subdirs.create!( :name => "#{k}#{["foo","bar","baz"][(i+j+k) % 3]}" )
     end
   end
+end
+
+5.times do |i|
+  root.files.create!(:name => "bin#{i}")
 end
 
 
