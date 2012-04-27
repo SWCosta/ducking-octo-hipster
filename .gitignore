@@ -17,4 +17,5 @@
 /config/database.yml
 /uploads
 
+.rvmrc
 TODO
