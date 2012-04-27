@@ -3,7 +3,7 @@ class Bin < Node
 
   mount_uploader :file, FileUploader
 
-  scope :under, proc{ |dir| where(:dir => dir.name) } # is this neccessary??
+  scope :under, proc { |dir| where(:dir => dir.name) } # is this neccessary??
 
   validates_presence_of :ancestry
 
@@ -13,6 +13,10 @@ class Bin < Node
 
   def write_properties
     #TODO: write file_size, name
+  end
+
+  def set_name
+    self.name = file.identifier
   end
 end
 # == Schema Information

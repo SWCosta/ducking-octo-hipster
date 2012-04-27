@@ -2,6 +2,7 @@ class Node < ActiveRecord::Base
 
   before_validation :set_basename, :set_fullname
   before_validation :set_user
+  before_validation :set_name, :if => proc { is_a?(Bin) && new_record? }
 
   validates_presence_of :name, :user_id, :fullname
   validates_presence_of :basename, :if => proc { |node| node.ancestors.any? }
@@ -12,6 +13,10 @@ class Node < ActiveRecord::Base
   has_ancestry
 
   belongs_to :user
+
+  def stripped_fullname
+    fullname.sub(/^\//,"")
+  end
 
   private
 
