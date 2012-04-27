@@ -1,0 +1,5 @@
+%h2= "#{@user.email} aktivieren"
+
+= simple_form_for @user do |f|
+  = hidden_field_tag "page", params[:page]
+  = f.button :submit, :name => "activate", :value => "User aktivieren"

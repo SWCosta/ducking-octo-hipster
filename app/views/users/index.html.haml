@@ -5,11 +5,14 @@
 %table
   %tr
     %th Email
+    %th aktiviert
     %th löschen
   - @users.each do |user|
-    %tr
-      %td= user.email
-      %td= link_button "löschen", user, :method => :delete
+    - present user do |user_presenter|
+      %tr
+        %td= user_presenter.email
+        %th= user_presenter.approved_label
+        %td= link_button "löschen", user, :method => :delete
 
 = link_button "Neuer User", new_user_path
 

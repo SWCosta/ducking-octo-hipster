@@ -40,4 +40,17 @@ module ApplicationHelper
     args[2][:class] ? args[2].push(" btn btn-primary") : args[2][:class] = "btn btn-primary"
     link_to(*args)
   end
+
+  # stuff for presenter
+  def present(object, klass = nil)
+    klass ||= "#{object.class}Presenter".constantize
+    presenter = klass.new(object, self)
+    yield presenter if block_given?
+    presenter
+  end
+
+  # bootstrap wrapper
+  def bootstrap_label(text, klass)
+    content_tag :span, text, :class => "label label-#{klass}"
+  end
 end
