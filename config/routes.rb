@@ -14,7 +14,7 @@ Filemanager::Application.routes.draw do
   end
 
   resource :file, :as => "bin"
-  resource :directory, :as => "dir", :except => :show
+  resources :directories, :as => "dir", :except => :show
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -73,3 +73,36 @@ Filemanager::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
 end
+#== Route Map
+# Generated on 25 Apr 2012 21:32
+#
+#             user_session POST   /users/sign_in(.:format)       devise/sessions#create
+#     destroy_user_session DELETE /users/sign_out(.:format)      devise/sessions#destroy
+#            user_password POST   /users/password(.:format)      devise/passwords#create
+#        new_user_password GET    /users/password/new(.:format)  devise/passwords#new
+#       edit_user_password GET    /users/password/edit(.:format) devise/passwords#edit
+#                          PUT    /users/password(.:format)      devise/passwords#update
+# cancel_user_registration GET    /users/cancel(.:format)        registrations#cancel
+#        user_registration POST   /users(.:format)               registrations#create
+#    new_user_registration GET    /users/sign_up(.:format)       registrations#new
+#   edit_user_registration GET    /users/edit(.:format)          registrations#edit
+#                          PUT    /users(.:format)               registrations#update
+#                          DELETE /users(.:format)               registrations#destroy
+#                    about GET    /about(.:format)               home#about
+#                    users GET    /users(.:format)               users#index
+#                 new_user GET    /users/new(.:format)           users#new
+#                     user DELETE /users/:id(.:format)           users#destroy
+#                 new_user POST   /users/new(.:format)           users#create
+#                     root        /                              home#index
+#                directory GET    /files(/*dir)(.:format)        directories#show
+#                      bin POST   /file(.:format)                files#create
+#                  new_bin GET    /file/new(.:format)            files#new
+#                 edit_bin GET    /file/edit(.:format)           files#edit
+#                          GET    /file(.:format)                files#show
+#                          PUT    /file(.:format)                files#update
+#                          DELETE /file(.:format)                files#destroy
+#                      dir POST   /directory(.:format)           directories#create
+#                  new_dir GET    /directory/new(.:format)       directories#new
+#                 edit_dir GET    /directory/edit(.:format)      directories#edit
+#                          PUT    /directory(.:format)           directories#update
+#                          DELETE /directory(.:format)           directories#destroy

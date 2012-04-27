@@ -1,17 +1,12 @@
-%h2= @dir.name
-
 %ul.breadcrumb
   %li
-    %span.divider= "/"
-  - directory_menu_items(@dir.name)[0..-2].each do |item|
+  - directory_menu_items(@dir.fullname)[0..-2].each do |item|
     %li
       = link_to item[:name], directory_path(item[:path])
       %span.divider= "/"
-  - last = directory_menu_items(@dir.name).last
+  - last = directory_menu_items(@dir.fullname).last
   %li
-    = last[:name]
-
-= link_button "Neues Verzeichnis", new_dir_path(:dir => @dir.name)
+    %strong= last[:name]
 
 %table
   %tr
@@ -20,5 +15,19 @@
     %tr
       %td
         %i.icon-folder-close
-        = link_to dir.basename, directory_path(dir.fullname)
+        = link_to dir.name, directory_path(dir.fullname.slice(1..-1))
+        = link_to icon("edit"), edit_dir_path(dir)
         -#= link_to_folder(dir)
+
+%table
+  %tr
+    %th Name
+  - @nodes.each do |node|
+    %tr
+      %td
+        %i.icon-folder-close
+        = link_to node.name, directory_path(node.fullname.slice(1..-1))
+        = link_to icon("edit"), edit_dir_path(node)
+        -#= link_to_folder(dir)
+= link_button "Neues Verzeichnis", new_dir_path(:dir => @dir)
+= link_button "Neue Datei hinzufügen", new_bin_path(:dir => @dir)

@@ -9,6 +9,9 @@
 puts "creating users"
 User.create!( :email => "yuszuv@gmx.de",
               :password => "foobar" )
+user = User.first
+user.toggle! :approved
+user.save!
 
 20.times do |i|
   User.create!( :email => "test#{i}@fucklove.de",

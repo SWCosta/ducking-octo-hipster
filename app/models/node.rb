@@ -1,20 +1,34 @@
 class Node < ActiveRecord::Base
+
+  before_validation :set_basename, :set_fullname
+  before_validation :set_user
+
+  validates_presence_of :name, :user_id, :fullname
+  validates_presence_of :basename, :if => proc { |node| node.ancestors.any? }
+  #validates_inclusion_of :user_id, in: User.all.map(&:id) # doesn't work properly due to caching
+
+  #default_scope order(:name)
+
   has_ancestry
 
   belongs_to :user
 
-  validates_presence_of :name, :user_id
-  #validates_inclusion_of :user_id, in: User.all.map(&:id) # doesn't work properly due to caching
+  private
 
-  #default_scope order(:name)
-  #scope :subdirs, children.where(:type => "Directory")
-  
-  def subdirs
-    children.where(:type => "Directory")
+  def set_basename
+    self.basename = File.join(*ancestors.map(&:name))
+  end
+
+  def set_fullname
+    self.fullname = File.join(basename, name.to_s)
+  end
+
+  def set_user
+    !user_id ? self.user_id = parent.user_id : nil
   end
 end
 # == Schema Information
-# Schema version: 20120425192930
+# Schema version: 20120426233351
 #
 # Table name: nodes
 #
@@ -29,6 +43,7 @@ end
 #  created_at   :datetime        not null
 #  updated_at   :datetime        not null
 #  basename     :text
+#  fullname     :text
 #
 # Indexes
 #

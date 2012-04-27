@@ -1,15 +1,16 @@
 class DirectoriesController < ApplicationController
   before_filter do
     @root = current_user.root_dir
+    @dirs = Directory.where(:user_id => current_user.id)
   end
 
   def new
-    @basedir = @root.find_by_name!(params[:dir])
-    @dir = Directory.new(:directory => @basedir)
+    @basedir = Directory.find(params[:dir])
+    @dir = @basedir.subdirs.new
   end
 
   def create
-    @dir = @root.new(params[:directory])
+    @dir = Directory.new(params[:directory])
     if @dir.save
       redirect_to directory_path(@dir.fullname), notice: "Erfolgreich Verzeichnis angelegt"
     else
@@ -19,15 +20,24 @@ class DirectoriesController < ApplicationController
   end
 
   def show
-    debugger
+    dirname = "/" + params[:dir].to_s
     @root.subtree.arrange
-    @dir = @root.find_by_name!("/#{params[:dir]}")
-    @subdirs = @dir.subdirs || []
-    rescue
-      if @root.blank?
-        @dir = @root.create!(:basename => "/")
-      else
-        raise
-      end
+    @dir = @dirs.find_by_fullname(dirname)
+    @nodes = @dir.children.order("type desc, name asc")
+    @subdirs = @nodes.where(:type => "Directory")
+  end
+
+  def edit
+    @dir = Directory.find(params[:id])
+  end
+
+  def update
+    @dir = Directory.find(params[:id])
+    if @dir.update_attributes(params[:directory])
+      redirect_to directory_path(@dir.parent.fullname.slice(1..-1)), notice: "Erfolgreich Verzeichnis bearbeitet"
+    else
+      flash.now[:alert] = "Fehler beim Verzeichnis bearbeiten"
+      render :new 
+    end
   end
 end

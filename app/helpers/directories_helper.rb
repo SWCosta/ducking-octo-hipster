@@ -3,21 +3,17 @@ module DirectoriesHelper
   def directory_naviation(name)
   end
 
-  def directory_menu_items(name)
-    split = name.split(/(?=\/)/)
-    split.inject(items = []) do |res,item|
-      res.push( { :path => if res.last.is_a?(Hash)
-                             res.last[:path] + item
-                           else
-                             item[1..-1]
-                           end,
-                  :name => item } )
+  def directory_menu_items(fullname)
+    split = fullname.split(/\//)
+    split = (split.size == 0 ? [""] : split)
+    e = Enumerator.new do |y|
+      split.size.times do |i|
+        y << split.take(i+1)
+      end
     end
-    items.each{ |item| item[:name].sub!(/^\//,"") }
+    e.inject([]) do |res,item|
+      res.push( { :name => (item.last.present? ? item.last : "Home"),
+                  :path => item.reject{ |i| i == ""}.join("/") } )
+    end
   end
-
-  #def link_to_folder(dir)
-  #  = "bla"
-  #  = "blubb"
-  #end
 end

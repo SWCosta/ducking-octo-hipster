@@ -1,45 +1,24 @@
 class Directory < Node
 
-  attr_writer :basename
-  
-  belongs_to :directory
-  has_many :subdirs, :class_name => "Directory",
-                     :foreign_key => "directory_id"
-
-  validates_presence_of :name
-  validates_presence_of :basename
   #TODO: validate uniqueness
 
-  before_validation :set_name
-  before_save :set_basename
-
-  def basename
-    @basename || (name.nil? ? nil : name.split(/\//).last)
+  def subdirs
+    Directory.where(:ancestry => File.join(*[ancestry,id.to_s].reject{ |i| i.blank? }))
   end
 
-  def fullname
-    name.slice(1..-1)
+  def files
+    Bin.where(:ancestry => File.join(*[ancestry,id.to_s].reject{ |i| i.blank? }))
   end
-
-  #def basename
-  #  basename = name.to_s.split(/\//).last
-  #  "/" if basename.nil? && directory.nil?
-  #end
-
-  ##def fullname
-  ##  #TODO: do that on the filesystem rather the db
-  ##  directory.present? ? File.join(directory.fullname, name).sub(/^\//,"") : ""
-  ##end
-  #
+  
   private
 
-  def set_name
-    dirname = directory.nil? ? "" : directory.name
-    self.name = File.join(dirname.to_s,basename.to_s).sub(/^(?=[^\/])/,"/")
+  def set_ancestry
+    self.ancestry = File.join(directory.id.to_s,directory.ancestry.to_s)
   end
+
 end
 # == Schema Information
-# Schema version: 20120425192930
+# Schema version: 20120426233351
 #
 # Table name: nodes
 #
@@ -54,6 +33,7 @@ end
 #  created_at   :datetime        not null
 #  updated_at   :datetime        not null
 #  basename     :text
+#  fullname     :text
 #
 # Indexes
 #

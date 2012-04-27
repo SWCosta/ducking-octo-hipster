@@ -1,0 +1,4 @@
+= simple_form_for @dir, :url => dir_path do |f|
+  = f.input :name
+  = f.input :ancestry, :as => :hidden
+  = f.button :submit

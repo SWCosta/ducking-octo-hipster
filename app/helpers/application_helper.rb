@@ -1,5 +1,11 @@
 # encoding: utf-8
 module ApplicationHelper
+  # a helper for icons in helper functions
+  def icon(*names)
+    names.map! { |i| "icon-" + i }
+    content_tag :i, "", :class => names.join(" ")
+  end
+
   # helper for the navigation
   def nav_class(path)
     request.path == path ? "active" : ""
