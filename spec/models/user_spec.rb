@@ -4,7 +4,7 @@ describe User do
   pending "add some examples to (or delete) #{__FILE__}"
 end
 # == Schema Information
-# Schema version: 20120419110829
+# Schema version: 20120427190351
 #
 # Table name: users
 #
@@ -22,11 +22,12 @@ end
 #  created_at             :datetime        not null
 #  updated_at             :datetime        not null
 #  approved               :boolean         default(FALSE), not null
+#  manufactured           :boolean         default(FALSE)
 #
 # Indexes
 #
-#  index_users_on_approved              (approved)
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #  index_users_on_email                 (email) UNIQUE
+#  index_users_on_approved              (approved)
 #
 
