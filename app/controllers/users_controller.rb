@@ -28,7 +28,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if params[:activate]
       @user.toggle!(:approved)
-      RegistrationMailer.mail
+      RegistrationMailer.activated_email(@user).deliver
       redirect_to users_path(:page => params[:page]), :notice => "User aktiviert"
     end
   end
