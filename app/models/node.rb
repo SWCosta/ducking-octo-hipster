@@ -33,7 +33,7 @@ class Node < ActiveRecord::Base
   end
 end
 # == Schema Information
-# Schema version: 20120426233351
+# Schema version: 20120427235442
 #
 # Table name: nodes
 #
@@ -49,6 +49,8 @@ end
 #  updated_at   :datetime        not null
 #  basename     :text
 #  fullname     :text
+#  extension    :string(255)     default("")
+#  size         :integer
 #
 # Indexes
 #

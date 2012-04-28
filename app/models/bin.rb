@@ -13,6 +13,8 @@ class Bin < Node
 
   def write_properties
     #TODO: write file_size, name
+    self.extension = ((match = name.match(/.*\.([a-zA-Z\d]+)/)) ? match[1] : nil)
+    self.size = file.size
   end
 
   def set_name
@@ -20,7 +22,7 @@ class Bin < Node
   end
 end
 # == Schema Information
-# Schema version: 20120426233351
+# Schema version: 20120427235442
 #
 # Table name: nodes
 #
@@ -36,6 +38,8 @@ end
 #  updated_at   :datetime        not null
 #  basename     :text
 #  fullname     :text
+#  extension    :string(255)     default("")
+#  size         :integer
 #
 # Indexes
 #
