@@ -12,4 +12,12 @@ class NodePresenter < BasePresenter
   def icon
     @template.icon("close")
   end
+
+  def size
+    ""
+  end
+
+  def extension
+    ""
+  end
 end

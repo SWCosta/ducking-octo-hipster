@@ -17,10 +17,9 @@
     - present node do |node_presenter|
       %tr
         %td= node_presenter.handle
-        %td
-          %i.icon-folder-close
-          = link_to node.name, directory_path(node.fullname.slice(1..-1))
-          = link_to icon("edit"), edit_dir_path(node)
+        %td= node_presenter.extension
+        %td= node_presenter.size
+        -#%td= node_presenter.actions
         -#= link_to_folder(dir)
 = link_button "Neues Verzeichnis", new_dir_path(:dir => @dir)
 = link_button "Neue Datei hinzufügen", new_bin_path(:dir => @dir)

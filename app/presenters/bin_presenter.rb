@@ -1,6 +1,6 @@
 class BinPresenter < NodePresenter
   def name
-    node.name
+    node.name.truncate(50)
   end
 
   def icon
@@ -9,6 +9,20 @@ class BinPresenter < NodePresenter
 
   def link
     "link_zum_runterladen"
+  end
+
+  def size
+    convert_size(node.size)
+  end
+
+  def extension
+    node.extension
+  end
+
+  private
+
+  def convert_size(byte)
+    ((kibibyte = byte / 1024) > 0) ? (((mibibyte = kibibyte / 1024) > 0) ? "#{mibibyte} MiB" : "#{kibibyte} kiB" ) : "#{byte} B"
   end
 end
 
