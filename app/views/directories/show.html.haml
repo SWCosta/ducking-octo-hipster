@@ -10,9 +10,11 @@
 
 = will_paginate @nodes, :previous_label => h("<"), :next_label => h(">"), :renderer => BootstrapLinkRenderer
 
-%table
+%table.table.table-condensed
   %tr
     %th Name
+    %th Dateityp
+    %th Größe
   - @nodes.each do |node|
     - present node do |node_presenter|
       %tr

@@ -18,6 +18,7 @@ gem 'devise'
 gem 'simple_form'
 gem 'will_paginate'
 gem 'carrierwave'
+gem 'rmagick'
 gem 'ancestry'
 
 group :assets do
@@ -50,5 +51,4 @@ end
 
 group :production do
   gem 'mysql2'
-  gem 'quiet_assets'
 end

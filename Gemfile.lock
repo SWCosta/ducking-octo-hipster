@@ -148,8 +148,6 @@ GEM
       rack
       rake (>= 0.8.1)
     polyglot (0.3.3)
-    quiet_assets (1.0.0)
-      rails (~> 3.1)
     rack (1.4.1)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -177,6 +175,7 @@ GEM
       ffi (>= 0.5.0)
     rdoc (3.12)
       json (~> 1.4)
+    rmagick (2.13.1)
     rspec (2.9.0)
       rspec-core (~> 2.9.0)
       rspec-expectations (~> 2.9.0)
@@ -267,9 +266,9 @@ DEPENDENCIES
   libnotify
   mysql2
   passenger (= 3.0.12)
-  quiet_assets
   rails (= 3.2.2)
   rb-inotify
+  rmagick
   rspec-rails (~> 2.6)
   rvm-capistrano
   sass-rails (~> 3.2.3)
