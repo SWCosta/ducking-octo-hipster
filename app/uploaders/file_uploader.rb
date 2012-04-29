@@ -3,7 +3,7 @@
 class FileUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
-  include CarrierWave::RMagick
+  #include CarrierWave::RMagick # TODO: comment this in
   # include CarrierWave::MiniMagick
 
   # Include the Sprockets helpers for Rails 3.1+ asset pipeline compatibility:
@@ -36,9 +36,15 @@ class FileUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  version :thumb do
-    process :resize_to_fill => [50, 50]
-  end
+  #version :thumb do
+  #  process :resize_to_fill => [50, 50]
+
+  #  #def full_filename(for_file = model.file.file) # TODO: read source code and create needed directory
+  #  #  debugger
+
+  #  #  "#{model.file.identifier}/thumb_#{model.file.identifier}"
+  #  #end
+  #end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:

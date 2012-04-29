@@ -7,6 +7,8 @@ class Bin < Node
 
   validates_presence_of :ancestry
 
+  # TODO: make this work validates_uniqueness_of :name, :scope => dir
+
   before_save :write_properties
 
   private
