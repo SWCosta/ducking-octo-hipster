@@ -5,7 +5,10 @@ gem 'capistrano'
 gem 'rvm-capistrano'
 gem 'passenger', '3.0.12'
 
+gem 'taps'
 gem 'sqlite3'
+
+gem 'pg'
 gem 'therubyracer'
 gem 'jquery-rails'
 gem 'haml-rails'
