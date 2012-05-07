@@ -8,7 +8,6 @@ gem 'passenger', '3.0.12'
 gem 'taps'
 gem 'sqlite3'
 
-gem 'pg'
 gem 'therubyracer'
 gem 'jquery-rails'
 gem 'haml-rails'
@@ -31,6 +30,7 @@ group :assets do
 end
 
 group :development, :test do
+  gem 'pg'
   gem "rspec-rails", "~> 2.6"
   # on mac os
   gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
